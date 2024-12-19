@@ -7,7 +7,6 @@ This guide will show you how to create a Linux VM in just one minute using Vagra
   [Download Vagrant](https://www.vagrantup.com/downloads)
 - **VirtualBox** (or another supported provider): Make sure you have VirtualBox installed as the default provider.  
   [Download VirtualBox](https://www.virtualbox.org/)
-- **VS Code** (or any other text editor): Used for editing the `Vagrantfile`.
 - **VS Code** (or any other text editor): Used for editing the `Vagrantfile`.  
   [Download VS Code](https://code.visualstudio.com/Download)
 
