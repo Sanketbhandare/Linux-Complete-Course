@@ -21,10 +21,10 @@ This guide will show you how to create a Linux VM in just one minute using Vagra
    This will create a `Vagrantfile` in the current directory.
 
 ### 2. Edit the Vagrantfile:
-   Open the `Vagrantfile` in a text editor (e.g., VS Code) and specify a Linux box (e.g., `ubuntu/bionic64`):
+   Open the `Vagrantfile` in a text editor (e.g., VS Code) and specify a Linux box (e.g., `ubuntu/trusty64`):
    ```ruby
    Vagrant.configure("2") do |config|
-     config.vm.box = "ubuntu/bionic64"  
+     config.vm.box = "ubuntu/trusty64"  
    end
      # You can change to any  Linux distro, like "ubuntu/focal64"
      # config.vm.box = "centos/8"         # For CentOS 8
