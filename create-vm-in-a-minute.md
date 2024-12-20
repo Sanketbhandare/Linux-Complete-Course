@@ -50,8 +50,14 @@ This guide will show you how to create a Linux VM in just one minute using Vagra
    ```
    Now you are connected to your Linux VM.
 
+### 7. Delete the VM:
+   Once you're done with your exercise , You can delete the VM using:
+   ```bash
+   vagrant destroy -f
+   ```
+   This will delete the Linux VM you've created previously. 
+   You need to delete the Vagrantfile & .vagrant directory manually for complete clean-up.
+
+
 ## Conclusion:
 You’ve successfully created and connected to a Linux VM using Vagrant in under a minute. This method is quick and ideal for setting up development environments.
-```
-
-Now, **Steps 4 to 6** and the **Conclusion** are properly formatted in Markdown, including the appropriate code blocks for terminal commands and configuration.
