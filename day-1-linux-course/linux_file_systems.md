@@ -1,3 +1,7 @@
+A **Linux file system** is a structured collection of files on a disk drive or a partition. A partition is a segment of memory/disk and contains some specific data.
+
+Linux supports various file system types, such as ext4, XFS, Btrfs, and ZFS, each offering different features like journaling, scalability, and snapshot capabilities. The most commonly used file system on Linux is ext4, known for its balance between performance and reliability.
+
 ### **1. Directory Structure - Hierarchical Structure**
 
 Linux uses a **hierarchical directory structure**, starting with the **root directory (`/`)** at the top. All files, directories, and devices are organized in this tree structure. Key directories include:
