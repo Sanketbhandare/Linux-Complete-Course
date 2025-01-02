@@ -466,73 +466,227 @@ Add the following HTML code for the feedback form:
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Linux Course Feedback</title>
     <style>
+        /* Global Styles */
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
+            background: linear-gradient(135deg, #6f42c1, #ff7f50);
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
         }
+
         .container {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 300px;
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+            transition: transform 0.3s ease-in-out;
         }
-        h1 {
+
+        .container:hover {
+            transform: scale(1.05);
+        }
+
+        h2 {
             text-align: center;
             color: #333;
+            margin-bottom: 20px;
+            font-size: 24px;
+            font-weight: bold;
         }
+
         label {
-            font-size: 14px;
+            font-size: 16px;
             color: #555;
+            margin-bottom: 10px;
+            display: block;
         }
-        input, textarea {
+
+        input[type="text"], input[type="email"], textarea, select {
             width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 4px;
+            padding: 12px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
             font-size: 14px;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease;
         }
-        textarea {
-            height: 100px;
-            resize: none;
+
+        input[type="text"]:focus, input[type="email"]:focus, textarea:focus, select:focus {
+            border-color: #6f42c1;
+            outline: none;
         }
+
+        .rating {
+            display: flex;
+            justify-content: space-between;
+            max-width: 350px;
+            margin-bottom: 20px;
+        }
+
+        .rating input {
+            margin-right: 5px;
+        }
+
+        .rating label {
+            font-size: 18px;
+            color: #666;
+        }
+
         button {
+            background-color: #6f42c1;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #5a34a4;
+        }
+
+        .textarea-container {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Success Message */
+        .success-message {
+            text-align: center;
+            padding: 20px;
             background-color: #4CAF50;
             color: white;
-            border: none;
-            padding: 10px;
-            width: 100%;
-            border-radius: 4px;
-            cursor: pointer;
+            font-size: 18px;
+            border-radius: 8px;
+            margin-top: 20px;
+            display: none;
         }
-        button:hover {
-            background-color: #45a049;
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+
+            h2 {
+                font-size: 22px;
+            }
+
+            .rating {
+                flex-direction: column;
+            }
+
+            .rating input {
+                margin-bottom: 5px;
+            }
+
+            button {
+                padding: 10px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Linux Course Feedback</h1>
-        <form action="#" method="post">
+        <h2>Linux Course Feedback</h2>
+        <form id="feedbackForm">
+            <!-- Name and Email Fields -->
             <label for="name">Your Name:</label>
-            <input type="text" id="name" name="name" required>
+            <input type="text" id="name" name="name" placeholder="Enter your name" required>
 
-            <label for="rating">Course Rating (1-5):</label>
-            <input type="number" id="rating" name="rating" min="1" max="5" required>
+            <label for="email">Your Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
 
-            <label for="comments">Additional Comments:</label>
-            <textarea id="comments" name="comments"></textarea>
+            <!-- Course Rating -->
+            <label for="course_rating">How would you rate the course content?</label>
+            <div class="rating">
+                <label for="course_rating_1">1</label>
+                <input type="radio" id="course_rating_1" name="course_rating" value="1" required>
+                <label for="course_rating_2">2</label>
+                <input type="radio" id="course_rating_2" name="course_rating" value="2">
+                <label for="course_rating_3">3</label>
+                <input type="radio" id="course_rating_3" name="course_rating" value="3">
+                <label for="course_rating_4">4</label>
+                <input type="radio" id="course_rating_4" name="course_rating" value="4">
+                <label for="course_rating_5">5</label>
+                <input type="radio" id="course_rating_5" name="course_rating" value="5">
+            </div>
 
+            <!-- Instructor Rating -->
+            <label for="instructor_rating">How would you rate the instructor?</label>
+            <div class="rating">
+                <label for="instructor_rating_1">1</label>
+                <input type="radio" id="instructor_rating_1" name="instructor_rating" value="1" required>
+                <label for="instructor_rating_2">2</label>
+                <input type="radio" id="instructor_rating_2" name="instructor_rating" value="2">
+                <label for="instructor_rating_3">3</label>
+                <input type="radio" id="instructor_rating_3" name="instructor_rating" value="3">
+                <label for="instructor_rating_4">4</label>
+                <input type="radio" id="instructor_rating_4" name="instructor_rating" value="4">
+                <label for="instructor_rating_5">5</label>
+                <input type="radio" id="instructor_rating_5" name="instructor_rating" value="5">
+            </div>
+
+            <!-- Additional Comments -->
+            <div class="textarea-container">
+                <label for="comments">Additional Comments:</label>
+                <textarea id="comments" name="comments" rows="5" placeholder="Enter your feedback here..."></textarea>
+            </div>
+
+            <!-- Submit Button -->
             <button type="submit">Submit Feedback</button>
         </form>
+
+        <!-- Success Message -->
+        <div class="success-message" id="successMessage">
+            Thank you for your feedback!
+        </div>
     </div>
+
+    <script>
+        // Handle form submission
+        document.getElementById("feedbackForm").addEventListener("submit", function(event) {
+            event.preventDefault();  // Prevent page reload
+
+            // Collecting form data
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const courseRating = document.querySelector('input[name="course_rating"]:checked')?.value;
+            const instructorRating = document.querySelector('input[name="instructor_rating"]:checked')?.value;
+            const comments = document.getElementById("comments").value;
+
+            // Validation
+            if (!courseRating || !instructorRating) {
+                alert("Please rate the course and the instructor.");
+                return;
+            }
+
+            // Display the success message
+            document.getElementById("successMessage").style.display = "block";
+
+            // Clear the form after submission
+            document.getElementById("feedbackForm").reset();
+
+            // Optionally, you could send the feedback to a server here using fetch() or XMLHttpRequest
+            console.log({
+                name: name,
+                email: email,
+                courseRating: courseRating,
+                instructorRating: instructorRating,
+                comments: comments
+            });
+        });
+    </script>
 </body>
 </html>
 ```
